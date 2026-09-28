@@ -1030,3 +1030,14 @@ function sendQuote(e){
     subject + "&body=" + body;
 }
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const formBox = document.querySelector("form")?.parentElement;
+  const quoteBox = document.querySelector(".quote-box");
+
+  if (formBox && quoteBox) {
+    quoteBox.appendChild(formBox);
+  }
+});
+</script>
