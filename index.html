@@ -977,3 +977,56 @@ resize();
   }
 }
 </style>
+</body>
+</html>
+<div style="max-width:700px;margin:30px auto;padding:30px;background:#0c121c;border:1px solid rgba(255,255,255,.1);border-radius:22px;">
+  <form onsubmit="sendQuote(event)">
+
+    <input id="qname" required placeholder="Your name"
+      style="width:100%;padding:15px;margin-bottom:12px;border-radius:10px;border:1px solid #263447;background:#101a27;color:white;">
+
+    <input id="qphone" required placeholder="Phone number"
+      style="width:100%;padding:15px;margin-bottom:12px;border-radius:10px;border:1px solid #263447;background:#101a27;color:white;">
+
+    <select id="qservice" required
+      style="width:100%;padding:15px;margin-bottom:12px;border-radius:10px;border:1px solid #263447;background:#101a27;color:white;">
+      <option value="">Select service</option>
+      <option>Emergency Plumbing</option>
+      <option>Boiler & Heating</option>
+      <option>Bathroom Plumbing</option>
+      <option>Other</option>
+    </select>
+
+    <textarea id="qmessage" required placeholder="Tell us what you need..."
+      style="width:100%;min-height:120px;padding:15px;margin-bottom:15px;border-radius:10px;border:1px solid #263447;background:#101a27;color:white;"></textarea>
+
+    <button type="submit"
+      style="width:100%;padding:16px;border:0;border-radius:10px;background:#35b6ff;color:#04111c;font-weight:800;font-size:16px;">
+      Send Quote Request →
+    </button>
+
+  </form>
+</div>
+
+<script>
+function sendQuote(e){
+  e.preventDefault();
+
+  const name = document.getElementById("qname").value;
+  const phone = document.getElementById("qphone").value;
+  const service = document.getElementById("qservice").value;
+  const message = document.getElementById("qmessage").value;
+
+  const subject = encodeURIComponent("New Plumbing Quote Request");
+  const body = encodeURIComponent(
+    "Name: " + name +
+    "\nPhone: " + phone +
+    "\nService: " + service +
+    "\n\nMessage:\n" + message
+  );
+
+  window.location.href =
+    "mailto:hello@northline.example?subject=" +
+    subject + "&body=" + body;
+}
+</script>
